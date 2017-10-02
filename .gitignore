@@ -2,5 +2,5 @@
 /build/
 /__*/
 __*
-/vids/
+/src/vids/
 *.spec
