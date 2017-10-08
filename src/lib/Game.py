@@ -3,7 +3,6 @@ import lib.utils
 import re
 import random
 import time
-import pyHook
 
 class Game:
 
