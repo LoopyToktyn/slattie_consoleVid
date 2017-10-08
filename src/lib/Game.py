@@ -112,19 +112,19 @@ class Game:
         vidLoc = os.path.join(os.path.dirname(__file__), '..', 'vids', 'fw', word)
         vidList = os.listdir(vidLoc)
         randomVid = random.choice(vidList)
-        print ("Play first word video: " + randomVid)
+        #print ("Play first word video: " + randomVid)
         os.system("omxplayer -b ./vids/fw/" + word + "/" + randomVid)
 
     def playSpecialWordVid(self, word):
         vidLoc = os.path.join(os.path.dirname(__file__), '..', 'vids', 'sw', word)
         vidList = os.listdir(vidLoc)
         randomVid = random.choice(vidList)
-        print ("Play special word video: " + randomVid)
-        os.system("omxplayer -b " + randomVid)
+        #print ("Play special word video: " + randomVid)
+        os.system("omxplayer -b ./vids/sw/" + word + "/" + randomVid)
 
     def playNonSpecialWordVid(self):
         vidLoc = os.path.join(os.path.dirname(__file__), '..', 'vids', 'nsw')
         vidList = os.listdir(vidLoc)
         randomVid = random.choice(vidList)
-        print ("Play non-special word video: " + randomVid)
-        os.system("omxplayer -b " + randomVid)
+        #print ("Play non-special word video: " + randomVid)
+        os.system("omxplayer -b ./vids/nsw/" + randomVid)
