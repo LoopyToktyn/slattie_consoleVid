@@ -28,6 +28,7 @@ main = Menu(title = "Main Menu", prompt = ">")
 
 main.set_options([
   ("Begin Game", Game.run),
+  ("Initialize Game", Game.initializeFolders),
   ("Exit", main.close)
 ])
 

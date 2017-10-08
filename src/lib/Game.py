@@ -2,6 +2,7 @@ import os
 import lib.utils
 import re
 import random
+import time
 
 class Game:
 
@@ -17,7 +18,8 @@ class Game:
         while not self.ADMIN_EXIT:
             os.system("clear")
             message = input("What is it you seek?\n> ")
-            words = message.split()
+            self.log(message)
+            words = message.lower().split()
             specialWords = list(set(words).intersection(self.SPECIAL_WORD_LIST))
 
             # print ("First word: " + words[0])
@@ -60,14 +62,49 @@ class Game:
                 # lib.utils.pauseAnyKey()
 
 
+    def initializeFolders(self):
+        # Create fw directories for words in first word list
+        # Also removes directories for deprecated words/videos
+        for word in self.FIRST_WORD_LIST:
+            fwLoc = os.path.join(os.path.dirname(__file__), '..', 'vids', 'fw', word)
+            if not os.path.isdir(fwLoc):
+                os.system("mkdir " + fwLoc)
+
+        fwDirList = os.listdir(os.path.join(os.path.dirname(__file__), '..', 'vids', 'fw'))
+        for directory in fwDirList:
+            # print("Directory to be checked: " + directory)
+            if directory not in self.FIRST_WORD_LIST:
+                # print("Removing directory: " + directory)
+                os.rmdir(os.path.join(os.path.dirname(__file__), '..', 'vids', 'fw', directory))
+
+        for word in self.SPECIAL_WORD_LIST:
+            swLoc = os.path.join(os.path.dirname(__file__), '..', 'vids', 'sw', word)
+            if not os.path.isdir(swLoc):
+                os.system("mkdir " + swLoc)
+
+        swDirList = os.listdir(os.path.join(os.path.dirname(__file__), '..', 'vids', 'sw'))
+        for directory in swDirList:
+            # print("Directory to be checked: " + directory)
+            if directory not in self.SPECIAL_WORD_LIST:
+                # print("Removing directory: " + directory)
+                os.rmdir(os.path.join(os.path.dirname(__file__), '..', 'vids', 'sw', directory))
+
+        # lib.utils.pauseAnyKey()
+
+    def log(self, message):
+        logLoc = os.path.join(os.path.dirname(__file__), '..', 'conf', 'log.txt')
+        f = open(logLoc, 'a+')
+        f.write(time.strftime("%x %H:%M:%S") + " >> " + message + "\n")
+        f.close()
+
     def getFirstWordList(self):
         file = open(os.path.join(os.path.dirname(__file__), '..', 'conf', 'firstWordList'))
-        words = file.read().splitlines()
+        words = file.read().lower().splitlines()
         return words
 
     def getSpecialWordList(self):
         file = open(os.path.join(os.path.dirname(__file__), '..', 'conf', 'specialWordList'))
-        words = file.read().splitlines()
+        words = file.read().lower().splitlines()
         return words
 
     def playFirstWordVid(self, word):
