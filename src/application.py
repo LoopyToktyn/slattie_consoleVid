@@ -11,20 +11,24 @@ global FIRSTRUN
 FIRSTRUN = True
 
 def refreshHandler():
-  # print ("Press any key...")
-  global FIRSTRUN
-  if FIRSTRUN:
-    FIRSTRUN = False
-  else:
-    utils.pauseAnyKey()
+  #Kill keyboard/mouse
+  def uMad(event):
+      return true
+
+  hm = pyHook.HookManager()
+  hm.MouseAll = uMad
+  hm.KeyAll = uMad
+  hm.HookMouse()
+  hm.HookKeyboard()
+  pythoncom.PumpMessages()
 
 
 Menu = menu.Menu
 utils = lib.utils
 Game = Game()
 
-# main = Menu(title = "Main Menu", prompt = ">", refresh = refreshHandler)
-main = Menu(title = "Main Menu", prompt = ">")
+main = Menu(title = "Main Menu", prompt = ">", refresh = refreshHandler)
+# main = Menu(title = "Main Menu", prompt = ">")
 
 main.set_options([
   ("Begin Game", Game.run),
