@@ -40,7 +40,7 @@ class Game:
             # FIRST WORD
             # Check if the first word of response is a special word
             elif words[0] in self.FIRST_WORD_LIST:
-                self.playFirstWordVid(words[0] + VIDEO_EXTENSION)
+                self.playFirstWordVid(words[0] + self.VIDEO_EXTENSION)
                 lib.utils.pauseAnyKey()
 
             # SPECIAL WORD
