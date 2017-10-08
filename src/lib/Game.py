@@ -66,7 +66,7 @@ class Game:
     def initializeFolders(self):
 
         #Kill keyboard/mouse
-        KeyboardLocker.turn_on()
+        # KeyboardLocker.turn_on()
 
         # Create fw directories for words in first word list
         # Also removes directories for deprecated words/videos

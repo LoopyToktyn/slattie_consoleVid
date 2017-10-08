@@ -5,23 +5,23 @@ import lib.getch
 from lib.Game import Game
 import menu
 import sys
-from lib.KeyboardLocker import KeyboardLocker
+
 
 global FIRSTRUN
 
 FIRSTRUN = True
 
-def refreshHandler():
+# def refreshHandler():
   #Kill keyboard/mouse
-  KeyboardLocker.turn_off()
+  # KeyboardLocker.turn_off()
 
 
 Menu = menu.Menu
 utils = lib.utils
 Game = Game()
 
-main = Menu(title = "Main Menu", prompt = ">", refresh = refreshHandler)
-# main = Menu(title = "Main Menu", prompt = ">")
+# main = Menu(title = "Main Menu", prompt = ">", refresh = refreshHandler)
+main = Menu(title = "Main Menu", prompt = ">")
 
 main.set_options([
   ("Begin Game", Game.run),
