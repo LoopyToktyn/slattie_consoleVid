@@ -28,16 +28,13 @@ main = Menu(title = "Main Menu", prompt = ">")
 
 main.set_options([
   ("Begin Game", Game.run),
-  ("Say hi to Jared", utils.hello),
-  ("Say bye to Jared", utils.goodbye),
-  ("Uh oh", utils.uhoh),
   ("Exit", main.close)
 ])
 
-sub = Menu(title = "Submenu")
-sub.set_options([
-("Return to main menu", sub.close)
-])
+# sub = Menu(title = "Submenu")
+# sub.set_options([
+# ("Return to main menu", sub.close)
+# ])
 
 
 main.open()

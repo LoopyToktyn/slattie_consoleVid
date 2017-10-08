@@ -30,7 +30,7 @@ class Game:
             # Did they not type anything?
             if not words:
                 print ("You seek nothing?")
-                lib.utils.pauseAnyKey()
+                lib.utils.pause()
 
             # Administrative back door to freedom
             elif words[0] == self.QUIT_COMMAND:
@@ -41,23 +41,23 @@ class Game:
             # Check if the first word of response is a special word
             elif words[0] in self.FIRST_WORD_LIST:
                 self.playFirstWordVid(words[0])
-                lib.utils.pauseAnyKey()
+                # lib.utils.pauseAnyKey()
 
             # SPECIAL WORD
             # Check if any words part of special words list
             elif specialWords:
                 randomWord = random.choice(specialWords)
                 self.playSpecialWordVid(randomWord)
-                lib.utils.pauseAnyKey()
+                # lib.utils.pauseAnyKey()
 
             # NON-SPECIAL WORD
             # Default behavior if no matches above
             else:
-                print ("***********************************\n")
-                print ("*** ERROR : MISFORTUNE IMMINENT ***\n")
-                print ("***********************************\n\n")
+                # print ("***********************************\n")
+                # print ("*** ERROR : MISFORTUNE IMMINENT ***\n")
+                # print ("***********************************\n\n")
                 self.playNonSpecialWordVid()
-                lib.utils.pauseAnyKey()
+                # lib.utils.pauseAnyKey()
 
 
     def getFirstWordList(self):
