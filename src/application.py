@@ -5,6 +5,7 @@ import lib.getch
 from lib.Game import Game
 import menu
 import sys
+from lib.KeyboardLocker import KeyboardLocker
 
 global FIRSTRUN
 
@@ -12,15 +13,7 @@ FIRSTRUN = True
 
 def refreshHandler():
   #Kill keyboard/mouse
-  def uMad(event):
-      return true
-
-  hm = pyHook.HookManager()
-  hm.MouseAll = uMad
-  hm.KeyAll = uMad
-  hm.HookMouse()
-  hm.HookKeyboard()
-  # pythoncom.PumpMessages()
+  KeyboardLocker.turn_off()
 
 
 Menu = menu.Menu

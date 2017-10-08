@@ -67,15 +67,7 @@ class Game:
     def initializeFolders(self):
 
         #Kill keyboard/mouse
-        def uMad(event):
-            return False
-
-        hm = pyHook.HookManager()
-        hm.MouseAll = uMad
-        hm.KeyAll = uMad
-        hm.HookMouse()
-        hm.HookKeyboard()
-        # pythoncom.PumpMessages()
+        KeyboardLocker.turn_on()
 
         # Create fw directories for words in first word list
         # Also removes directories for deprecated words/videos
