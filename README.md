@@ -2,6 +2,9 @@
 
 
 To run: in command prompt, type
+> pipenv --three
+> pipenv shell
+> pipenv install
 > python3 application.py
 
 
