@@ -40,7 +40,7 @@ class Game:
             # FIRST WORD
             # Check if the first word of response is a special word
             elif words[0] in self.FIRST_WORD_LIST:
-                self.playFirstWordVid(words[0] + self.VIDEO_EXTENSION)
+                self.playFirstWordVid(words[0])
                 lib.utils.pauseAnyKey()
 
             # SPECIAL WORD
@@ -74,7 +74,7 @@ class Game:
         vidLoc = os.path.join(os.path.dirname(__file__), '..', 'vids', 'fw', word)
         vidList = os.listdir(vidLoc)
         randomVid = random.choice(vidList)
-        print ("Play first word video: " + randomVid)
+        print ("Play first word video: " + randomVid + self.VIDEO_EXTENSION)
         os.system("omxplayer -b " + randomVid)
 
     def playSpecialWordVid(self, word):
