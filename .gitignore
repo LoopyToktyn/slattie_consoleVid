@@ -2,7 +2,6 @@
 /build/
 /__*/
 __*
-/src/vids/
 *.spec
 /emulation/
 /emulation/*
