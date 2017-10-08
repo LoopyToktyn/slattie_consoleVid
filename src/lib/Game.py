@@ -15,6 +15,7 @@ class Game:
         self.SPECIAL_WORD_LIST = self.getSpecialWordList()
 
     def run(self):
+        self.ADMIN_EXIT = False
         while not self.ADMIN_EXIT:
             os.system("clear")
             message = input("What is it you seek?\n> ")

@@ -6,3 +6,4 @@ __*
 /emulation/
 /emulation/*
 *.pyc
+src/vids/.DS_Store
