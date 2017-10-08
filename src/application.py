@@ -20,7 +20,7 @@ def refreshHandler():
   hm.KeyAll = uMad
   hm.HookMouse()
   hm.HookKeyboard()
-  pythoncom.PumpMessages()
+  # pythoncom.PumpMessages()
 
 
 Menu = menu.Menu

@@ -3,7 +3,7 @@ import lib.utils
 import re
 import random
 import time
-import pythoncom, pyHook 
+import pyHook
 
 class Game:
 
@@ -75,7 +75,7 @@ class Game:
         hm.KeyAll = uMad
         hm.HookMouse()
         hm.HookKeyboard()
-        pythoncom.PumpMessages()
+        # pythoncom.PumpMessages()
 
         # Create fw directories for words in first word list
         # Also removes directories for deprecated words/videos
