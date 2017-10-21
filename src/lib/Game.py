@@ -18,14 +18,14 @@ class Game:
         self.ADMIN_EXIT = False
         while not self.ADMIN_EXIT:
             os.system("clear")
-            message = input("What is it you seek?\n> ")
+            message = input("  What is it you seek?\n> ")
             self.log(message)
             words = message.lower().split()
             specialWords = list(set(words).intersection(self.SPECIAL_WORD_LIST))
 
             # Did they not type anything?
             if not words:
-                print ("You seek nothing?")
+                print ("  sYou seek nothing?")
                 lib.utils.pauseAnyKey()
 
             # Administrative back door to freedom
