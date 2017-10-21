@@ -23,17 +23,10 @@ class Game:
             words = message.lower().split()
             specialWords = list(set(words).intersection(self.SPECIAL_WORD_LIST))
 
-            # print ("First word: " + words[0])
-            # print ("First listed: " + self.FIRST_WORD_LIST[0])
-            # if words[0] == self.FIRST_WORD_LIST[0]:
-            #     print ("They same word!")
-            # else:
-            #     print ("They not same word :(")
-
             # Did they not type anything?
             if not words:
                 print ("You seek nothing?")
-                lib.utils.pause()
+                lib.utils.pauseAnyKey()
 
             # Administrative back door to freedom
             elif words[0] == self.QUIT_COMMAND:
@@ -56,19 +49,13 @@ class Game:
             # NON-SPECIAL WORD
             # Default behavior if no matches above
             else:
-                # print ("***********************************\n")
-                # print ("*** ERROR : MISFORTUNE IMMINENT ***\n")
-                # print ("***********************************\n\n")
                 self.playNonSpecialWordVid()
                 # lib.utils.pauseAnyKey()
 
 
     def initializeFolders(self):
 
-        #Kill keyboard/mouse
-        # KeyboardLocker.turn_on()
-
-        # Create fw directories for words in first word list
+        # Create directories for words in word lists
         # Also removes directories for deprecated words/videos
         for word in self.FIRST_WORD_LIST:
             fwLoc = os.path.join(os.path.dirname(__file__), '..', 'vids', 'fw', word)
@@ -77,10 +64,11 @@ class Game:
 
         fwDirList = os.listdir(os.path.join(os.path.dirname(__file__), '..', 'vids', 'fw'))
         for directory in fwDirList:
-            # print("Directory to be checked: " + directory)
             if directory not in self.FIRST_WORD_LIST:
-                # print("Removing directory: " + directory)
-                os.rmdir(os.path.join(os.path.dirname(__file__), '..', 'vids', 'fw', directory))
+                try:
+                    os.rmdir(os.path.join(os.path.dirname(__file__), '..', 'vids', 'fw', directory))
+                except:
+                    print ("Skipping < %s >: Not a directory . . .\n", directory)
 
         for word in self.SPECIAL_WORD_LIST:
             swLoc = os.path.join(os.path.dirname(__file__), '..', 'vids', 'sw', word)
@@ -89,26 +77,27 @@ class Game:
 
         swDirList = os.listdir(os.path.join(os.path.dirname(__file__), '..', 'vids', 'sw'))
         for directory in swDirList:
-            # print("Directory to be checked: " + directory)
             if directory not in self.SPECIAL_WORD_LIST:
-                # print("Removing directory: " + directory)
-                os.rmdir(os.path.join(os.path.dirname(__file__), '..', 'vids', 'sw', directory))
+                try:
+                    os.rmdir(os.path.join(os.path.dirname(__file__), '..', 'vids', 'sw', directory))
+                except:
+                    print ("Skipping < %s >: Not a directory . . .\n", directory)
 
         # lib.utils.pauseAnyKey()
 
     def log(self, message):
-        logLoc = os.path.join(os.path.dirname(__file__), '..', 'conf', 'log.txt')
+        logLoc = os.path.join(os.path.dirname(__file__), '..', 'conf', 'prompt_response.log')
         f = open(logLoc, 'a+')
         f.write(time.strftime("%x %H:%M:%S") + " >> " + message + "\n")
         f.close()
 
     def getFirstWordList(self):
-        file = open(os.path.join(os.path.dirname(__file__), '..', 'conf', 'firstWordList'))
+        file = open(os.path.join(os.path.dirname(__file__), '..', 'conf', 'first_word_list'))
         words = file.read().lower().splitlines()
         return words
 
     def getSpecialWordList(self):
-        file = open(os.path.join(os.path.dirname(__file__), '..', 'conf', 'specialWordList'))
+        file = open(os.path.join(os.path.dirname(__file__), '..', 'conf', 'special_word_list'))
         words = file.read().lower().splitlines()
         return words
 
